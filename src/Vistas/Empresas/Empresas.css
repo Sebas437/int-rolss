@@ -1,0 +1,13 @@
+.empresas{
+    margin:50px 200px 0 200px;
+}
+
+@media screen and (max-width: 991px) {
+    .empresas {
+        margin:20px 20px 0 20px;
+    }
+}
+
+.table{
+    width: 600px!important;
+}
