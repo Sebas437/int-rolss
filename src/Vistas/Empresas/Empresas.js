@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import CreateEmpresa from './CreateEmpresa';
-import { Link } from 'react-router-dom';
 import datos from '../../api/empresas.json';
 import './Empresas.css'
 
-import { Button } from "react-bootstrap";
-import { Search } from "react-bootstrap-icons";
+import { Button, Table } from "react-bootstrap";
+import { Search, Building } from "react-bootstrap-icons";
 
 const Empresas = () => {
 
     const [empresas, setEmpresas] = useState([])
+    const [buscador, setBuscador] = useState()
 
     useEffect(() => {
         getEmpresas()
@@ -28,40 +28,45 @@ const Empresas = () => {
 
     }
 
+
     return (
-        <div className='empresas '>
+        <div className='empresas'>
+
+            <div className='text-end mb-5'>
+                <h1>Gestión Empresas</h1>
+                <hr></hr>
+            </div>
 
             <div className='row'>
+
                 <div className='col-lg-4'>
-
-                    <div className="card shadow mt-2 mb-2">
-                        <div className="card-header text-primary"><i className="fa fa-search"></i> Buscar Empresa: </div>
-
-                        <div className="input-group m-2">
-                            <input type="text" className="form-control" id="BuscarOperario" required />
-                            <div className="input-group-append">
-                                <Button type='submit' variant='outline-primary'><Search /></Button>
-                            </div>
-                        </div>
-                    </div>
-
                     <CreateEmpresa getEmpresas={getEmpresas} />
-
                 </div>
 
                 <div className='col-lg-1'></div>
 
                 <div className='col-lg-7 '>
-                    <div className="card shadow mt-2 mb-2">
+                    <div className="card shadow mb-2">
                         <div className="card-body text-dark">
 
-                            <div className='text-end mt-2 me-4'>
-                                <h1>Empresas</h1>
+                            <div className='row'>
+                                <div className='col-lg-6'>
+                                    <div className="input-group mt-3 ms-2">
+                                        <input type="text" className="form-control" value={buscador} onChange={(e) => setBuscador(e.target.value)} placeholder='Buscar' required />
+                                    </div>
+                                </div>
+
+                                <div className='col-lg-6'>
+                                    <div className='text-end mt-2 me-4'>
+                                        <h2>Empresas <Building /></h2>
+                                    </div>
+                                </div>
+
                             </div>
                             <hr className='mb-4'></hr>
 
 
-                            <table className="table table-striped table-responsive text-dark w-100">
+                            <Table striped>
                                 <thead>
                                     <tr>
                                         <th>Nit</th>
@@ -78,7 +83,7 @@ const Empresas = () => {
                                         </tr>
                                     ))}
                                 </tbody>
-                            </table>
+                            </Table>
                         </div>
                     </div>
                 </div>

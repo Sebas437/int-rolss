@@ -1,0 +1,17 @@
+.colaboradores{
+    margin:30px 200px 0 200px;
+}
+
+@media screen and (max-width: 991px) {
+    .colaboradores {
+        margin:20px 20px 0 20px;
+    }
+}
+
+.table {
+    position: -webkit-sticky; /* Safari... */
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+  

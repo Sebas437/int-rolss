@@ -6,6 +6,8 @@ import Dashboard from '../Dashboard/Dashboard';
 import Preferences from '../Preferences/Preferences';
 import Login from '../Login/Login';
 import Empresas from '../Empresas/Empresas';
+import Colaboradores from '../Colaboradores/Colaboradores';
+import ValidaOk from '../ValidaOk/ValidaOk';
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 
 import Navbar1 from '../../Componentes/layouts/Navbar';
@@ -31,6 +33,7 @@ function App() {
     return <Login setToken={setToken} />
   }
 
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -41,6 +44,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/preferences" element={<Preferences />} />
           <Route path="/empresas" element={<Empresas />} />
+          <Route path="/colaboradores" element={<Colaboradores />} />
+          <Route path="/validaok" element={<ValidaOk />} />
 
         </Routes>
       </BrowserRouter>

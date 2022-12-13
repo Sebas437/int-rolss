@@ -1,9 +1,9 @@
-.empresas{
+.validaok{
     margin:30px 200px 0 200px;
 }
 
 @media screen and (max-width: 991px) {
-    .empresas {
+    .validaok {
         margin:20px 20px 0 20px;
     }
 }
