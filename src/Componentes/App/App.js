@@ -10,17 +10,17 @@ import Colaboradores from '../Colaboradores/Colaboradores';
 import ValidaOk from '../ValidaOk/ValidaOk';
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 
-import Navbar1 from '../../Componentes/layouts/Navbar';
+import Navbar1 from '../layouts/Navbar';
 
 
 function App() {
 
   const setToken = (userToken) => {
-    sessionStorage.setItem('token', JSON.stringify(userToken));
+    localStorage.setItem('token', JSON.stringify(userToken));
   }
 
   const getToken = () => {
-    const tokenString = sessionStorage.getItem('token');
+    const tokenString = localStorage.getItem('token');
     const userToken = JSON.parse(tokenString);
 
     return userToken
@@ -37,9 +37,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar1 />
-        <Routes>
 
+        <Navbar1 />
+
+        <Routes>
 
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/preferences" element={<Preferences />} />

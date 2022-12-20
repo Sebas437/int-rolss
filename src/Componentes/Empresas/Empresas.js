@@ -1,30 +1,33 @@
 import React, { useEffect, useState } from 'react';
+
 import CreateEmpresa from './CreateEmpresa';
+import EditEmpresa from './EditEmpresa';
+
 import datos from '../../api/empresas.json';
+
 import './Empresas.css'
 
 import { Button, Table } from "react-bootstrap";
-import { Search, Building } from "react-bootstrap-icons";
+import { Building } from "react-bootstrap-icons";
 
 const Empresas = () => {
 
     const [empresas, setEmpresas] = useState([])
+
     const [buscador, setBuscador] = useState()
 
     useEffect(() => {
         getEmpresas()
-
     }, [])
 
 
     const getEmpresas = async () => {
-        // await fetch(`${endpoint}/products`, {
-        //     method: 'GET',
-        //     headers: { 'Content-Type': 'application/json;charset=utf-8' }
-        // })
-        //     .then(res => res.json())
-        //     .then(data => { setProducts(data) })
-        setEmpresas(datos);
+        await fetch(`http://127.0.0.1:8000/api/empresas`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json;charset=utf-8' }
+        })
+            .then(res => res.json())
+            .then(data => { setEmpresas(data) })
 
     }
 
@@ -79,7 +82,7 @@ const Empresas = () => {
                                         <tr key={vt_empresa.nit}>
                                             <td>{vt_empresa.nit}</td>
                                             <td>{vt_empresa.nombre}</td>
-                                            <td><Button></Button></td>
+                                            <td><EditEmpresa datos = { vt_empresa } /></td>
                                         </tr>
                                     ))}
                                 </tbody>

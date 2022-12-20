@@ -13,7 +13,7 @@ const Login = ({ setToken }) => {
   const validar = async (e) => {
     e.preventDefault();
 
-    // await fetch('http://localhost:3000/login', {
+    // await fetch('http://127.0.0.1:8000/api/login', {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json'
@@ -22,9 +22,7 @@ const Login = ({ setToken }) => {
     // })
     //   .then(data => data.json())
     //   .then(data => { setToken(data.token) })
-
-    setToken(datos.token)
-
+    setToken("data.token")
   }
   
 

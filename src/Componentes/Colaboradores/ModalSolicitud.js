@@ -26,6 +26,7 @@ const ModalSolicitud = () => {
     const [nombre, setNombre] = useState('');
 
     const [modal, setModal] = useState(false);
+    
     const modalShow = () => setModal(true);
     const modalClose = () => setModal(false);
 

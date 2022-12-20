@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './Vistas/app/App';
+import App from './Componentes/App/App';
 import Button from 'bootstrap';
 import "@fontsource/montserrat";
 
