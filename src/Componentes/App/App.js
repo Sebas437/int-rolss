@@ -48,7 +48,7 @@ function App() {
           <Route path="/empresas" element={<Empresas />} />
           <Route path="/colaboradores" element={<Colaboradores />} />
           <Route path="/validaok" element={<ValidaOk />} />
-          <Route path="/ValidateColaborador" element={<ValidaColaborador />} />
+          <Route path="/verificacion" element={<ValidaColaborador />} />
 
         </Routes>
       </BrowserRouter>
