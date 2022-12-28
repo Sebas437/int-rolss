@@ -116,7 +116,6 @@ const ModalSolicitud = () => {
       </Accordion>
     </Container>
 
-
   );
 };
 
