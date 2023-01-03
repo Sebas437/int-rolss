@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import colaboradores from "../../api/colaboradoresEmpresa.json"
 import { Modal, Button, Form, Table } from "react-bootstrap";
 
 const ModalValidacion = (props) => {
@@ -50,6 +51,7 @@ const ModalValidacion = (props) => {
                   </tr>
                 </thead>
                 <tbody>
+                 
                   <tr>
                     <td>{fecha}</td>
                     <td>{cedula}</td>
@@ -65,7 +67,7 @@ const ModalValidacion = (props) => {
                         <option>Seleccione la opcion</option>
                         <option value="aprobado">Aprobado</option>
                         <option value="Naprobado">No aprobado</option>
-                        <option value="Fdocumento">Falta documento</option>
+                        
                       </Form.Select>
                     </td>
                   </tr>
