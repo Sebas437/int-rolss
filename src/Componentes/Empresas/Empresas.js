@@ -82,7 +82,7 @@ const Empresas = () => {
                                         <tr key={vt_empresa.nit}>
                                             <td>{vt_empresa.nit}</td>
                                             <td>{vt_empresa.nombre}</td>
-                                            <td><EditEmpresa datos = { vt_empresa } /></td>
+                                            <td><EditEmpresa datos={ vt_empresa } getEmpresas={getEmpresas} /></td>
                                         </tr>
                                     ))}
                                 </tbody>

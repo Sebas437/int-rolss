@@ -12,12 +12,20 @@ const CreateEmpresa = (props) => {
 
   const store = async (e) => {
     e.preventDefault();
-    await axios.post("http://127.0.0.1:8000/api/empresas", { nit: nit, nombre: nombre });
 
-    setNit("");
-    setNombre('');
+    await fetch("http://127.0.0.1:8000/api/empresas", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify({ nit: nit, nombre: nombre })
+    })
+    .then(a => {
 
-    props.getEmpresas();
+      setNit('');
+      setNombre('');
+      props.getEmpresas();
+    })
+
+
   }
 
   return (

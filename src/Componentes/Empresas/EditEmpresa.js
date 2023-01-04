@@ -13,7 +13,22 @@ const EditEmpresa = (props) => {
     const modalShow = () => setModal(true);
     const modalClose = () => setModal(false);
 
-
+    const editEmpresa = async (e) => {
+        e.preventDefault();
+    
+        await fetch(`http://127.0.0.1:8000/api/empresa/${nit}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json;charset=utf-8' },
+          body: JSON.stringify({ nombre: nombre })
+        })
+        .then(a => {
+    
+          props.getEmpresas();
+          modalClose();
+        })
+    
+    
+      }
 
 
     return (
@@ -26,11 +41,11 @@ const EditEmpresa = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <>
-                        <Form className='row m-1'>
+                        <Form className='row m-1' onSubmit={editEmpresa}>
 
                             <Form.Group className='mt-2 mb-2'>
                                 <Form.Label>Documento: <strong className="text-danger">*</strong></Form.Label>
-                                <Form.Control value={nit} onChange={(e) => setNit(e.target.value)} required type='text' />
+                                <Form.Control value={nit}  disabled/>
                             </Form.Group>
 
                             <Form.Group className='mt-4'>

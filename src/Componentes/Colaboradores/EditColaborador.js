@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Modal, Button, Form } from "react-bootstrap";
 
+
 const EditColaborador = (props) => {
 
-    const [cedula, setCedula]         = useState(props.datos.cedula);
+    const [cedula, setCedula]         = useState(props.datos.documento);
     const [nombre, setNombre]         = useState(props.datos.nombre);
     const [apellidos, setApellidos]   = useState(props.datos.apellidos);
     const [n_contacto, setN_contacto] = useState(props.datos.n_contacto);
@@ -16,6 +17,23 @@ const EditColaborador = (props) => {
     const modalShow = () => setModal(true);
     const modalClose = () => setModal(false);
 
+    const getArchivos = async (doc, archivo) => {
+
+
+        const respuesta = await fetch(`http://127.0.0.1:8000/api/colaboradorarchivo/${doc}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json;charset=utf-8' },
+            body: JSON.stringify({ archivo: archivo }),
+        })
+
+        const blob = await respuesta.blob();
+        const url = URL.createObjectURL(blob);
+        const enlace = document.createElement('a');
+        enlace.href = url;
+
+        enlace.download = archivo;
+        enlace.click();
+    }
 
 
 

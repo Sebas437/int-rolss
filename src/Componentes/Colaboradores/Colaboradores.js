@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 import CreateColaborador from './CreateColaborador';
 import EditColaborador from './EditColaborador';
 import ModalSolicitud from './ModalSolicitud';
-import datos from '../../api/colaboradores.json';
 import './Colaboradores.css'
 
+import { BoxArrowInDown } from "react-bootstrap-icons";
 
 import { Button, Table } from "react-bootstrap";
 import { Person, Building } from "react-bootstrap-icons";
 
 const Colaboradores = () => {
 
-    const [colaboradores, setColaboradores] = useState([])
-    const [buscador, setBuscador] = useState()
-
+    const [colaboradores, setColaboradores] = useState([]);
+    const [buscador, setBuscador] = useState('');
+    const [create, setCreate] = useState(false)
     useEffect(() => {
         getColaboradores()
 
@@ -21,13 +21,33 @@ const Colaboradores = () => {
 
 
     const getColaboradores = async () => {
-        // await fetch(`${endpoint}/products`, {
-        //     method: 'GET',
-        //     headers: { 'Content-Type': 'application/json;charset=utf-8' }
-        // })
-        //     .then(res => res.json())
-        //     .then(data => { setProducts(data) })
-        setColaboradores(datos);
+        await fetch('http://127.0.0.1:8000/api/colaboradores', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json;charset=utf-8' }
+        })
+            .then(res => res.json())
+            .then(data => { setColaboradores(data) })
+
+       
+        
+    }
+
+    const getArchivo = async (doc, archivo) => {
+
+
+        const respuesta = await fetch(`http://127.0.0.1:8000/api/colaboradorarchivo/${doc}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json;charset=utf-8' },
+            body: JSON.stringify({ archivo: archivo }),
+        })
+
+        const blob = await respuesta.blob();
+        const url = URL.createObjectURL(blob);
+        const enlace = document.createElement('a');
+        enlace.href = url;
+
+        enlace.download = archivo;
+        enlace.click();
     }
 
     return (
@@ -69,26 +89,40 @@ const Colaboradores = () => {
                             <Table striped style={{ display: "block", overflowX: "auto", whiteSpace: "nowrap" }}>
                                 <thead>
                                     <tr>
-                                        <th>Cedula</th>
+                                        <th>Documento</th>
                                         <th>Nombre</th>
                                         <th>Apellidos</th>
                                         <th>Numero</th>
                                         <th>Arl</th>
-                                        <th>Fotocopia Cedula</th>
-                                        <th>C. Trabajo en Alturas</th>
+                                        <th>F Cedula</th>
+                                        <th>C. Trabajo Alturas</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {colaboradores.map((vt_colaborador) => (
-                                        <tr key={vt_colaborador.cedula}>
-                                            <td>{vt_colaborador.cedula}</td>
+                                        <tr key={vt_colaborador.documento}>
+                                            <td>{vt_colaborador.documento}</td>
                                             <td>{vt_colaborador.nombre}</td>
                                             <td>{vt_colaborador.apellidos}</td>
                                             <td>{vt_colaborador.n_contacto}</td>
-                                            <td>{vt_colaborador.arl}</td>
-                                            <td>{vt_colaborador.f_cedula}</td>
-                                            <td>{vt_colaborador.c_alturas}</td>
+
+                                            <td><BoxArrowInDown className='chulito' onClick={
+                                                () => getArchivo(vt_colaborador.documento, vt_colaborador.arl)}>
+                                                </BoxArrowInDown>
+                                            </td>
+
+                                            <td><BoxArrowInDown className='chulito' onClick={
+                                                () => getArchivo(vt_colaborador.documento, vt_colaborador.f_cedula)}>
+                                            </BoxArrowInDown>
+                                            </td>
+
+                                            {vt_colaborador.c_alturas != null ? 
+                                            <td><BoxArrowInDown className='chulito' onClick={
+                                                () => getArchivo(vt_colaborador.documento, vt_colaborador.c_alturas)}>
+                                                </BoxArrowInDown></td> 
+                                                : <td>NO</td>}
+
                                             <td><EditColaborador datos={vt_colaborador} /></td>
                                         </tr>
                                     ))}
@@ -98,7 +132,6 @@ const Colaboradores = () => {
                             <div className='text-end me-5 m-2 mt-4'>
                                 <ModalSolicitud />
                             </div>
-
                         </div>
                     </div>
                 </div>

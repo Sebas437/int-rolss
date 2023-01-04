@@ -2,21 +2,56 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Modal, Button, Form } from "react-bootstrap";
 import { PersonAdd } from "react-bootstrap-icons";
+import { showSuccessAlert, showErrorAlert } from '../alerts.js';
 
 const CreateColaborador = (props) => {
 
-  const [cedula, setCedula]         = useState('');
-  const [nombre, setNombre]         = useState('');
-  const [apellidos, setApellidos]   = useState('');
+  const [state, setState] = useState({ reloadTrigger: 0 });
+
+  const [documento, setDocumento] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [apellidos, setApellidos] = useState('');
   const [n_contacto, setN_contacto] = useState('');
-  const [arl, setArl]               = useState(); 
-  const [f_cedula, setF_cedula]     = useState();
-  const [c_alturas, setC_alturas]   = useState();
+
+  const [arl, setArl] = useState(null);
+  const [f_cedula, setF_cedula] = useState(null);
+  const [c_alturas, setC_alturas] = useState(null);
 
   const insertColaborador = async (e) => {
-      const f = new FormData();
+    e.preventDefault();
 
-  }
+    const formData = new FormData();
+
+    // Añadimos más datos al objeto FormData si es necesario
+    formData.append('documento', documento);
+    formData.append('nombre', nombre);
+    formData.append('apellidos', apellidos);
+    formData.append('n_contacto', n_contacto);
+    formData.append('arl', arl);
+    formData.append('f_cedula', f_cedula);
+    formData.append('c_alturas', c_alturas);
+
+    await fetch("http://127.0.0.1:8000/api/colaboradores", {
+      method: 'POST',
+      body: formData,
+    })
+    .then(res => res.json())
+    .then(data => {
+
+      if (data === false) {
+        showErrorAlert();
+      }else if(data === true){
+        props.getColaboradores();
+        e.target.reset();
+        showSuccessAlert('Colaborador');
+      }
+
+    })
+  
+
+    
+    
+  };
 
 
   return (
@@ -30,41 +65,41 @@ const CreateColaborador = (props) => {
           </div>
           <hr className='mb-4'></hr>
 
-          <Form>
+          <Form onSubmit={insertColaborador}>
 
             <Form.Group>
               <Form.Label>Documento: <strong className="text-danger">*</strong></Form.Label>
-              <Form.Control value={cedula} onChange={(e) => setCedula(e.target.value)} required type='text' />
+              <Form.Control onChange={(e) => setDocumento(e.target.value)} required type='text' />
             </Form.Group>
 
             <Form.Group className='mt-3'>
               <Form.Label>Nombre: <strong className="text-danger">*</strong></Form.Label>
-              <Form.Control value={nombre} onChange={(e) => setNombre(e.target.value)} type='text' required />
+              <Form.Control onChange={(e) => setNombre(e.target.value)} type='text' required />
             </Form.Group>
 
             <Form.Group className='mt-3'>
               <Form.Label>Apellidos: <strong className="text-danger">*</strong></Form.Label>
-              <Form.Control value={apellidos} onChange={(e) => setApellidos(e.target.value)} type='text' required />
+              <Form.Control onChange={(e) => setApellidos(e.target.value)} type='text' required />
             </Form.Group>
 
             <Form.Group className='mt-3'>
               <Form.Label>Numero de contacto: <strong className="text-danger">*</strong></Form.Label>
-              <Form.Control value={n_contacto} onChange={(e) => setN_contacto(e.target.value)} type='number' required />
+              <Form.Control onChange={(e) => setN_contacto(e.target.value)} type='number' required />
             </Form.Group>
 
             <Form.Group className='mt-3'>
               <Form.Label>Arl: <strong className="text-danger">*</strong></Form.Label>
-              <Form.Control value={arl} onChange={(e) => setArl(e.target.value)} type='file' required />
+              <Form.Control onChange={(e) => setArl(e.target.files[0])} type='file' required />
             </Form.Group>
 
             <Form.Group className='mt-3'>
               <Form.Label>Fotocopia Cedula: <strong className="text-danger">*</strong></Form.Label>
-              <Form.Control value={f_cedula} onChange={(e) => setF_cedula(e.target.value)} type='file' required />
+              <Form.Control onChange={(e) => setF_cedula(e.target.files[0])} type='file' required />
             </Form.Group>
 
             <Form.Group className='mt-3'>
               <Form.Label>Certificado Trabajo en alturas:</Form.Label>
-              <Form.Control value={c_alturas} onChange={(e) => setC_alturas(e.target.value)} type='file' />
+              <Form.Control onChange={(e) => setC_alturas(e.target.files[0])} type='file' />
             </Form.Group>
 
 
