@@ -8,6 +8,7 @@ import Login from '../Login/Login';
 import Empresas from '../Empresas/Empresas';
 import Colaboradores from '../Colaboradores/Colaboradores';
 import ValidaOk from '../ValidaOk/ValidaOk';
+import ValidaColaborador from '../Colaboradores/ValidateColaborador'
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 
 import Navbar1 from '../layouts/Navbar';
@@ -47,6 +48,7 @@ function App() {
           <Route path="/empresas" element={<Empresas />} />
           <Route path="/colaboradores" element={<Colaboradores />} />
           <Route path="/validaok" element={<ValidaOk />} />
+          <Route path="/verificacion" element={<ValidaColaborador />} />
 
         </Routes>
       </BrowserRouter>

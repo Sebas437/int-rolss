@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import CreateColaborador from './CreateColaborador';
 import EditColaborador from './EditColaborador';
 import ModalSolicitud from './ModalSolicitud';
+
+import datos from '../../api/colaboradores.json';
 import './Colaboradores.css'
 
 import { BoxArrowInDown } from "react-bootstrap-icons";
 
 import { Button, Table } from "react-bootstrap";
-import { Person, Building } from "react-bootstrap-icons";
+import { Person, Building, } from "react-bootstrap-icons";
 
 const Colaboradores = () => {
 
@@ -129,15 +131,21 @@ const Colaboradores = () => {
                                 </tbody>
                             </Table>
 
-                            <div className='text-end me-5 m-2 mt-4'>
+                       
+                        </div>
+                    
+                        <div className='d-flex flex-direction-row justify-content-end'>
+                            <div className=' m-2 mt-1'>
                                 <ModalSolicitud />
                             </div>
+
                         </div>
+                    </div>                    
                     </div>
                 </div>
-
-            </div>
-        </div>
+                </div>
+            
+        
     )
 }
 

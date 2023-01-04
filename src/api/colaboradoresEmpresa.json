@@ -1,0 +1,63 @@
+[
+  {
+    "fecha": "27/12/2022",
+    "cedula": "104003649",
+    "nombre": "Camila",
+    "apellidos": "Quintero Rincon",
+    "n_contacto": "3501264646",
+    "arl": "",
+    "f_cedula": ".",
+    "c_alturas": ".",
+    "labor": "mantenimiento",
+    "aprobacion": true
+  },
+  {
+    "fecha": "26/12/2022",
+    "cedula": "31664331",
+    "nombre": "Alfredo",
+    "apellidos": "Ramirez Londoño",
+    "n_contacto": "35012123106",
+    "arl": ".",
+    "f_cedula": ".",
+    "c_alturas": ".",
+    "labor": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "aprobacion": null
+  },
+  {
+    "fecha": "25/12/2022",
+    "cedula": "109944181",
+    "nombre": "Isabela",
+    "apellidos": "Rivillas Castañeda",
+    "n_contacto": "3501264646",
+    "arl": ".",
+    "f_cedula": "",
+    "c_alturas": ".",
+    "labor": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. ",
+    "aprobacion": false
+  },
+  {
+    "fecha": "24/12/2022",
+    "cedula": "105400166",
+    "nombre": "Camila",
+    "apellidos": "Ordoñez Rincon",
+    "n_contacto": "3501264646",
+    "arl": ".",
+    "f_cedula": ".",
+    "c_alturas": ".",
+    "labor": "mantenimiento",
+    "aprobacion": true
+  },
+  {
+    "fecha": "24/12/2022",
+    "cedula": "1054012321",
+    "nombre": "Pedro",
+    "apellidos": "Botero Sanchez",
+    "n_contacto": "435234213",
+    "arl": ".",
+    "f_cedula": ".",
+    "c_alturas": ".",
+    "labor": "Revision",
+    "aprobacion": false
+  }
+]
+

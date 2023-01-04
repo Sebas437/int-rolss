@@ -39,8 +39,9 @@ const EditColaborador = (props) => {
 
     return (
         <div>
+            
             <button className='btn btn-primary' onClick={modalShow}>Editar</button>
-
+            
             <Modal show={modal} onHide={modalClose} size="lg">
                 <Modal.Header closeButton>
                     <Modal.Title>Editar Colaborador </Modal.Title>
@@ -48,7 +49,7 @@ const EditColaborador = (props) => {
                 <Modal.Body>
                     <>
                         <Form className='row m-1'>
-
+                        
                             <Form.Group className='col-6'>
                                 <Form.Label>Documento: <strong className="text-danger">*</strong></Form.Label>
                                 <Form.Control value={cedula} onChange={(e) => setCedula(e.target.value)} required type='text' />
