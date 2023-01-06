@@ -6,8 +6,6 @@ import { showSuccessAlert, showErrorAlert } from '../alerts.js';
 
 const CreateColaborador = (props) => {
 
-  const [state, setState] = useState({ reloadTrigger: 0 });
-
   const [documento, setDocumento] = useState('');
   const [nombre, setNombre] = useState('');
   const [apellidos, setApellidos] = useState('');
@@ -19,6 +17,16 @@ const CreateColaborador = (props) => {
 
   const insertColaborador = async (e) => {
     e.preventDefault();
+    const fileArl = document.getElementById("arl");
+    const fileF_cedula = document.getElementById("f_cedula");
+    const fileC_alturas = document.getElementById("c_alturas");
+
+    // if (fileInput.files[0] && fileInput.files[0].type === "application/pdf"
+    // ) {
+    //   // El archivo es un PDF
+    // } else {
+    //   // El archivo no es un PDF
+    // }
 
     const formData = new FormData();
 
@@ -89,17 +97,17 @@ const CreateColaborador = (props) => {
 
             <Form.Group className='mt-3'>
               <Form.Label>Arl: <strong className="text-danger">*</strong></Form.Label>
-              <Form.Control onChange={(e) => setArl(e.target.files[0])} type='file' required />
+              <Form.Control onChange={(e) => setArl(e.target.files[0])} type='file' accept=".pdf" id='arl' required />
             </Form.Group>
 
             <Form.Group className='mt-3'>
               <Form.Label>Fotocopia Cedula: <strong className="text-danger">*</strong></Form.Label>
-              <Form.Control onChange={(e) => setF_cedula(e.target.files[0])} type='file' required />
+              <Form.Control onChange={(e) => setF_cedula(e.target.files[0])} type='file' accept=".pdf" id='f_cedula' required />
             </Form.Group>
 
             <Form.Group className='mt-3'>
               <Form.Label>Certificado Trabajo en alturas:</Form.Label>
-              <Form.Control onChange={(e) => setC_alturas(e.target.files[0])} type='file' />
+              <Form.Control onChange={(e) => setC_alturas(e.target.files[0])} type='file' id='c_alturas' accept=".pdf" />
             </Form.Group>
 
 

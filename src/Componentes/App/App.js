@@ -10,6 +10,7 @@ import Colaboradores from '../Colaboradores/Colaboradores';
 import ValidaOk from '../ValidaOk/ValidaOk';
 import ValidaColaborador from '../Colaboradores/ValidateColaborador'
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
+import ViewPdf from '../ViewPdf/ViewPdf';
 
 import Navbar1 from '../layouts/Navbar';
 
@@ -49,6 +50,7 @@ function App() {
           <Route path="/colaboradores" element={<Colaboradores />} />
           <Route path="/validaok" element={<ValidaOk />} />
           <Route path="/verificacion" element={<ValidaColaborador />} />
+          <Route path="/viewpdf" element={<ViewPdf />} />
 
         </Routes>
       </BrowserRouter>

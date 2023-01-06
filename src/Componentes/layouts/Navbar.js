@@ -9,7 +9,7 @@ const Navbar1 = () => {
   
   return (
     <>
-        <Navbar className='navBg' style={{backgroundColor: "#0575ED"}} expand="lg">
+        <Navbar className='navBg' style={{backgroundColor: "#0575ED"}} expand="lg" id='navbar'>
             <Container>
                 <Navbar.Brand as={Link} to='/' className='brand'>CONTROL INGRESO</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -16,6 +16,7 @@ const Colaboradores = () => {
     const [colaboradores, setColaboradores] = useState([]);
     const [buscador, setBuscador] = useState('');
     const [create, setCreate] = useState(false)
+
     useEffect(() => {
         getColaboradores()
 
@@ -109,9 +110,11 @@ const Colaboradores = () => {
                                             <td>{vt_colaborador.apellidos}</td>
                                             <td>{vt_colaborador.n_contacto}</td>
 
-                                            <td><BoxArrowInDown className='chulito' onClick={
+                                            <td>
+                                                {/* <BoxArrowInDown className='chulito' onClick={
                                                 () => getArchivo(vt_colaborador.documento, vt_colaborador.arl)}>
-                                                </BoxArrowInDown>
+                                                </BoxArrowInDown> */}
+                                                <a href={`./viewpdf?doc=${vt_colaborador.documento}&url=${vt_colaborador.arl}`} target='_blank'>pdf</a>
                                             </td>
 
                                             <td><BoxArrowInDown className='chulito' onClick={
