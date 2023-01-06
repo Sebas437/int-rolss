@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useState } from 'react';
+import { Gear } from "react-bootstrap-icons";
 import { Modal, Button, Form } from "react-bootstrap";
 
 
@@ -40,7 +40,7 @@ const EditColaborador = (props) => {
     return (
         <div>
             
-            <button className='btn btn-primary' onClick={modalShow}>Editar</button>
+            <button className='btn btn-primary' onClick={modalShow}><Gear /></button>
             
             <Modal show={modal} onHide={modalClose} size="lg">
                 <Modal.Header closeButton>

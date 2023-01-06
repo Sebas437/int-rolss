@@ -2,8 +2,8 @@ import React, { useLayoutEffect, useState } from 'react';
 import './ViewPdf.css'
 const ViewPdf = () => {
 
-  //Leemos los parametros en la url
-  const searchParams = new URLSearchParams(window.location.search);
+  const searchParams = new URLSearchParams(window.location.search); //Leemos los parametros en la url
+
   //Asignamos los parametros a las variables
   const doc = searchParams.get('doc');
   const url = searchParams.get('url');
@@ -22,14 +22,15 @@ const ViewPdf = () => {
   
   const getArchivo = async () => {
 
+    // Peticion al back, guardamos esta peticion en una constante
     const respuesta = await fetch(`http://127.0.0.1:8000/api/colaboradorarchivo/${doc}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify({ archivo: url }),
     })
 
-    const blob = await respuesta.blob()
-    setArchivo(URL.createObjectURL(blob));
+    const blob = await respuesta.blob(); // Ejecutamos a peticion, y esperamos respuesta ".blob" (archivo)
+    setArchivo(URL.createObjectURL(blob)); // Asignamos el archivo a la variabe
   }
   
   return (

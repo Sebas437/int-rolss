@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import {Accordion, Container, Row, Col} from "react-bootstrap";
 import datos from "../../api/colaboradoresEmpresa.json";
 import ModalValidacion from "./ModalValidacion";

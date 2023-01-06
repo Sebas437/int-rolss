@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react';
+
 import CreateColaborador from './CreateColaborador';
 import EditColaborador from './EditColaborador';
 import ModalSolicitud from './ModalSolicitud';
 
-import datos from '../../api/colaboradores.json';
 import './Colaboradores.css'
 
-import { BoxArrowInDown } from "react-bootstrap-icons";
-
-import { Button, Table } from "react-bootstrap";
-import { Person, Building, } from "react-bootstrap-icons";
+import { Eye, Person } from "react-bootstrap-icons";
+import { Table } from "react-bootstrap";
 
 const Colaboradores = () => {
 
+    // Declaramos las variables de estado
     const [colaboradores, setColaboradores] = useState([]);
     const [buscador, setBuscador] = useState('');
-    const [create, setCreate] = useState(false)
 
+    // Se ejecuta cada render
     useEffect(() => {
         getColaboradores()
 
@@ -24,33 +23,13 @@ const Colaboradores = () => {
 
 
     const getColaboradores = async () => {
+        // Peticion al back
         await fetch('http://127.0.0.1:8000/api/colaboradores', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json;charset=utf-8' }
         })
             .then(res => res.json())
-            .then(data => { setColaboradores(data) })
-
-       
-        
-    }
-
-    const getArchivo = async (doc, archivo) => {
-
-
-        const respuesta = await fetch(`http://127.0.0.1:8000/api/colaboradorarchivo/${doc}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json;charset=utf-8' },
-            body: JSON.stringify({ archivo: archivo }),
-        })
-
-        const blob = await respuesta.blob();
-        const url = URL.createObjectURL(blob);
-        const enlace = document.createElement('a');
-        enlace.href = url;
-
-        enlace.download = archivo;
-        enlace.click();
+            .then(data => { setColaboradores(data) }) // Asignamos a colaboradores, los datos que nos retorna la peticion       
     }
 
     return (
@@ -64,9 +43,9 @@ const Colaboradores = () => {
             <div className='row'>
 
                 <div className='col-lg-4'>
+                    {/* Llamamos el componente y le pasamos la funcion "getColaboradores" */}
                     <CreateColaborador getColaboradores={getColaboradores} />
                 </div>
-
 
                 <div className='col-lg-8'>
                     <div className="card shadow mb-2">
@@ -92,17 +71,18 @@ const Colaboradores = () => {
                             <Table striped style={{ display: "block", overflowX: "auto", whiteSpace: "nowrap" }}>
                                 <thead>
                                     <tr>
-                                        <th>Documento</th>
-                                        <th>Nombre</th>
-                                        <th>Apellidos</th>
-                                        <th>Numero</th>
-                                        <th>Arl</th>
-                                        <th>F Cedula</th>
-                                        <th>C. Trabajo Alturas</th>
-                                        <th>Acciones</th>
+                                        <th style={{ width:"13%"}}>Documento</th>
+                                        <th style={{ width:"15%"}}>Nombre</th>
+                                        <th style={{ width:"18%"}}>Apellidos</th>
+                                        <th style={{ width:"14%"}}>Numero</th>
+                                        <th style={{ width:"10%"}}>Arl</th>
+                                        <th style={{ width:"10%"}}>F. Cedula</th>
+                                        <th style={{ width:"11%"}}>C. Alturas</th>
+                                        <th style={{ width:"9%"}}>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {/* Exploramos la variable e imprimimos los datos */}
                                     {colaboradores.map((vt_colaborador) => (
                                         <tr key={vt_colaborador.documento}>
                                             <td>{vt_colaborador.documento}</td>
@@ -111,44 +91,52 @@ const Colaboradores = () => {
                                             <td>{vt_colaborador.n_contacto}</td>
 
                                             <td>
-                                                {/* <BoxArrowInDown className='chulito' onClick={
-                                                () => getArchivo(vt_colaborador.documento, vt_colaborador.arl)}>
-                                                </BoxArrowInDown> */}
-                                                <a href={`./viewpdf?doc=${vt_colaborador.documento}&url=${vt_colaborador.arl}`} target='_blank'>pdf</a>
+                                                {/* Fila con enlace al documento, en la url mandamos los parametros, doc y url */}
+                                                <a href={`./viewpdf?doc=${vt_colaborador.documento}&url=${vt_colaborador.arl}`} target='_blank'>
+                                                    <Eye style={{ fontSize: "25px" }}></Eye>
+                                                </a>
                                             </td>
 
-                                            <td><BoxArrowInDown className='chulito' onClick={
-                                                () => getArchivo(vt_colaborador.documento, vt_colaborador.f_cedula)}>
-                                            </BoxArrowInDown>
+                                            <td>
+                                                {/* Fila con enlace al documento, en la url mandamos los parametros, doc y url */}
+                                                <a href={`./viewpdf?doc=${vt_colaborador.documento}&url=${vt_colaborador.f_cedula}`} target='_blank'>
+                                                    <Eye style={{ fontSize: "25px" }}></Eye>
+                                                </a>
                                             </td>
 
-                                            {vt_colaborador.c_alturas != null ? 
-                                            <td><BoxArrowInDown className='chulito' onClick={
-                                                () => getArchivo(vt_colaborador.documento, vt_colaborador.c_alturas)}>
-                                                </BoxArrowInDown></td> 
+                                            {/* Validamos si el colaborador tiene c_alturas, en caso de que no, mostramos "NO" */}
+                                            {vt_colaborador.c_alturas != null ?
+                                                <td>
+                                                    {/* Fila con enlace al documento, en la url mandamos los parametros, doc y url */}
+                                                    <a href={`./viewpdf?doc=${vt_colaborador.documento}&url=${vt_colaborador.c_alturas}`} target='_blank'>
+                                                        <Eye style={{ fontSize: "25px" }}></Eye>
+                                                    </a>
+                                                </td>
                                                 : <td>NO</td>}
 
-                                            <td><EditColaborador datos={vt_colaborador} /></td>
+                                            {/* Llamamos el componente EditColaborador y como parametro pasamos los
+                                             datos del colaborador que vamos a editar */}
+                                            <td className='text-center'><EditColaborador datos={vt_colaborador} /></td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </Table>
 
-                       
+
                         </div>
-                    
+
                         <div className='d-flex flex-direction-row justify-content-end'>
                             <div className=' m-2 mt-1'>
                                 <ModalSolicitud />
                             </div>
 
                         </div>
-                    </div>                    
                     </div>
                 </div>
-                </div>
-            
-        
+            </div>
+        </div>
+
+
     )
 }
 
