@@ -2,6 +2,18 @@
     margin:30px 200px 0 200px;
 }
 
+@media screen and (max-width: 1800px) {
+    .validaok {
+        margin:20px 120px 0 120px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .validaok {
+        margin:20px 60px 0 60px;
+    }
+}
+
 @media screen and (max-width: 991px) {
     .validaok {
         margin:20px 20px 0 20px;

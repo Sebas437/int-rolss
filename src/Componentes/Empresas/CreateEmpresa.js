@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { Modal, Button, Form, Check } from "react-bootstrap";
+import React, { useState } from 'react'
+import { Button, Form, Check } from "react-bootstrap";
 import { BuildingAdd } from "react-bootstrap-icons";
 
 
 const CreateEmpresa = (props) => {
 
-  const [nit, setNit] = useState();
-  const [nombre, setNombre] = useState();
+  // Declaramos las variables de estado
+  const [nit, setNit] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [correo, setCorreo] = useState('');
 
 
   const store = async (e) => {
@@ -16,14 +17,12 @@ const CreateEmpresa = (props) => {
     await fetch("http://127.0.0.1:8000/api/empresas", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
-      body: JSON.stringify({ nit: nit, nombre: nombre })
+      body: JSON.stringify({ nit: nit, nombre: nombre, correo: correo })
     })
-    .then(a => {
-
-      setNit('');
-      setNombre('');
-      props.getEmpresas();
-    })
+      .then(a => {
+        e.target.reset(); //Vaciamos el formulario
+        props.getEmpresas();
+      })
 
 
   }
@@ -51,6 +50,10 @@ const CreateEmpresa = (props) => {
               <Form.Control value={nombre} onChange={(e) => setNombre(e.target.value)} type='text' required />
             </Form.Group>
 
+            <Form.Group className='mt-3'>
+              <Form.Label>Correo: <strong className="text-danger">*</strong></Form.Label>
+              <Form.Control value={correo} onChange={(e) => setCorreo(e.target.value)} type='email' required />
+            </Form.Group>
 
             <div className='text-center'>
               <Button type='submit' variant='outline-primary' className='mt-4 px-5'>Crear</Button>

@@ -71,7 +71,7 @@ const Colaboradores = () => {
                             <Table striped style={{ display: "block", overflowX: "auto", whiteSpace: "nowrap" }}>
                                 <thead>
                                     <tr>
-                                        <th style={{ width:"13%"}}>Documento</th>
+                                        <th style={{ width:"15%"}}>Documento</th>
                                         <th style={{ width:"15%"}}>Nombre</th>
                                         <th style={{ width:"18%"}}>Apellidos</th>
                                         <th style={{ width:"14%"}}>Numero</th>
@@ -105,7 +105,7 @@ const Colaboradores = () => {
                                             </td>
 
                                             {/* Validamos si el colaborador tiene c_alturas, en caso de que no, mostramos "NO" */}
-                                            {vt_colaborador.c_alturas != null ?
+                                            {vt_colaborador.c_alturas != null && vt_colaborador.c_alturas != "null" ?
                                                 <td>
                                                     {/* Fila con enlace al documento, en la url mandamos los parametros, doc y url */}
                                                     <a href={`./viewpdf?doc=${vt_colaborador.documento}&url=${vt_colaborador.c_alturas}`} target='_blank'>
@@ -116,7 +116,7 @@ const Colaboradores = () => {
 
                                             {/* Llamamos el componente EditColaborador y como parametro pasamos los
                                              datos del colaborador que vamos a editar */}
-                                            <td className='text-center'><EditColaborador datos={vt_colaborador} /></td>
+                                            <td className='text-center'><EditColaborador datos={vt_colaborador} getColaboradores={getColaboradores} /></td>
                                         </tr>
                                     ))}
                                 </tbody>
