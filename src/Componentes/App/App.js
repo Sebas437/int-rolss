@@ -13,6 +13,7 @@ import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 import ViewPdf from '../ViewPdf/ViewPdf';
 
 import Navbar1 from '../layouts/Navbar';
+import { checkPropTypes } from 'prop-types';
 
 
 function App() {
@@ -28,13 +29,18 @@ function App() {
     return userToken
   }
 
-  const token = getToken();
+ 
 
+  const credentialsExist = localStorage!==null;
+  console.log(credentialsExist)
+
+  const token = getToken();
+  
   //Si el token no existe, llamos el login y le pasamos la funcion
   if (!token) {
     return <Login setToken={setToken} />
   }
-
+  
   
   return (
     <div className="App">

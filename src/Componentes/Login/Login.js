@@ -4,11 +4,15 @@ import "./Login.css"
 import PropTypes from 'prop-types';
 import datos from '../../api/datos.json'
 
+import { useIsAuthenticated } from "@azure/msal-react";
+import { SignInButton } from "../SignInButton";
+import { SignOutButton } from "../SignOutButton";
 
 const Login = ({ setToken }) => {
 
   const [user, setUser] = useState();
   const [contra, setContra] = useState();
+  const isAuthenticated = useIsAuthenticated();
 
   const validar = async (e) => {
     e.preventDefault();
@@ -57,7 +61,7 @@ const Login = ({ setToken }) => {
 
             </Form>
           </div>
-
+          { isAuthenticated ? <SignOutButton /> : <SignInButton /> }
 
         </div>
       </div>
