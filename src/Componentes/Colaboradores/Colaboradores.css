@@ -20,15 +20,6 @@
     }
 }
 
-
-
-.table {
-    position: -webkit-sticky; /* Safari... */
-    position: sticky;
-    top: 0;
-    left: 0;
-  }
-
 .frmedit{
     display: block;
     width: 100%;

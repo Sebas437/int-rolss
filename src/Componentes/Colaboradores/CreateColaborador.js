@@ -48,15 +48,16 @@ const CreateColaborador = (props) => {
                     .then(res => res.json())
                     .then(data => {
                         // Validamos la respuesta del back
-                        if (data === false) {
-                            // Error, no se inserto el colaborador
-                            showErrorAlert();
-                        } else if (data === true) {
-
+                        if (data === true) {
                             // Exito
                             props.getColaboradores(); //Recargamos la Table 
                             e.target.reset(); //Vaciamos el formulario
                             showSuccessAlert('Colaborador');
+                            
+                        } else {
+                            // Error, no se inserto el colaborador
+                            showErrorAlert();
+                            console.log(data)
                         }
                     })
             }
