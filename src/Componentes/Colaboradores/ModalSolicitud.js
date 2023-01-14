@@ -100,23 +100,23 @@ const ModalSolicitud = () => {
 
                                             <td>
                                                 {/* Fila con enlace al documento, en la url mandamos los parametros, doc y url */}
-                                                <a href={`./viewpdf?doc=${vt_colaborador.documento}&url=${vt_colaborador.arl}`} target='_blank'>
+                                                <a href={`./viewpdf?doc=${vt_colaborador.documento}&url=${vt_colaborador.archivo.arl}`} target='_blank'>
                                                     <Eye style={{ fontSize: "25px" }}></Eye>
                                                 </a>
                                             </td>
 
                                             <td>
                                                 {/* Fila con enlace al documento, en la url mandamos los parametros, doc y url */}
-                                                <a href={`./viewpdf?doc=${vt_colaborador.documento}&url=${vt_colaborador.f_cedula}`} target='_blank'>
+                                                <a href={`./viewpdf?doc=${vt_colaborador.documento}&url=${vt_colaborador.archivo.f_cedula}`} target='_blank'>
                                                     <Eye style={{ fontSize: "25px" }}></Eye>
                                                 </a>
                                             </td>
 
                                             {/* Validamos si el colaborador tiene c_alturas, en caso de que no, mostramos "NO" */}
-                                            {vt_colaborador.c_alturas != null && vt_colaborador.c_alturas != "null" ?
+                                            {vt_colaborador.archivo.c_alturas != null && vt_colaborador.archivo.c_alturas != "null" ?
                                                 <td>
                                                     {/* Fila con enlace al documento, en la url mandamos los parametros, doc y url */}
-                                                    <a href={`./viewpdf?doc=${vt_colaborador.documento}&url=${vt_colaborador.c_alturas}`} target='_blank'>
+                                                    <a href={`./viewpdf?doc=${vt_colaborador.documento}&url=${vt_colaborador.archivo.c_alturas}`} target='_blank'>
                                                         <Eye style={{ fontSize: "25px" }}></Eye>
                                                     </a>
                                                 </td>
