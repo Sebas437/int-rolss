@@ -25,3 +25,6 @@ root.render(
 </React.StrictMode>
     
 );
+
+const account = msalInstance.getAccountByUsername;
+console.log(account)

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import {Accordion, Container, Row, Col} from "react-bootstrap";
 import datos from "../../api/colaboradoresEmpresa.json";
 import ModalValidacion from "./ModalValidacion";
+import Username from "./username"
 
 const ModalSolicitud = () => {
   const [colaboradores, setColaboradores] = useState([]);
@@ -28,10 +29,12 @@ const ModalSolicitud = () => {
     //Colaboradores Por Aprobar
 
     <Container>
+      <Username />
       <Row>
         <Col>
           <Accordion className=" mt-5">
             <div className=" mb-4">
+              <Username />
               <h4>Colaboradores a validar</h4>
             </div>
             {colaboradores.map((item) =>

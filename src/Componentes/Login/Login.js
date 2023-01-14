@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import "./Login.css"
 import PropTypes from 'prop-types';
 import datos from '../../api/datos.json'
+import Config from "../../nuevo"
 
 import { useIsAuthenticated } from "@azure/msal-react";
 import { SignInButton } from "../SignInButton";
@@ -62,13 +63,18 @@ const Login = ({ setToken }) => {
             </Form>
           </div>
           { isAuthenticated ? <SignOutButton /> : <SignInButton /> }
+          
+          
 
         </div>
       </div>
 
     </div>
   )
+ 
+
 }
+
 
 //Requerimos la funcion setToken si o si, la cual nos llega desde app.js
 Login.propTypes = {

@@ -31,8 +31,8 @@ function App() {
 
  
 
-  const credentialsExist = localStorage!==null;
-  console.log(credentialsExist)
+  // const credentialsExist = localStorage!==null;
+  // console.log(credentialsExist)
 
   const token = getToken();
   
