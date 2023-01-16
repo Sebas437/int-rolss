@@ -28,6 +28,8 @@ const Login = ({ setToken }) => {
     //   .then(data => data.json())
     //   .then(data => { setToken(data.token) })
     setToken("data.token")
+
+    
   }
   
 
