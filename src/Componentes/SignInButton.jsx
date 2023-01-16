@@ -33,6 +33,6 @@ export const SignInButton = () => {
        
         <Button variant="light"  className="ml-auto w-10 text-end" onClick={() => handleLogin("redirect")}><Windows />Microsoft</Button>
         
-      
+       
     );
 }
