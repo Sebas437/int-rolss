@@ -1,7 +1,3 @@
-
-
-
-
 export const msalConfig = {
   auth: {
     clientId: "9827c154-49c3-4587-834b-dc3fe2d66253",

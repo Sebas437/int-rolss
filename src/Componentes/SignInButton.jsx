@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { redirect } from 'react-router-dom';
 import { useState } from 'react';
 import { useIsAuthenticated } from "@azure/msal-react";
+import { Windows } from "react-bootstrap-icons";
 
 
 
@@ -30,7 +31,8 @@ export const SignInButton = () => {
     }
     return (
        
-        <Button variant="secondary" className="ml-auto" onClick={() => handleLogin("redirect")}>Sign in using Redirect</Button>
+        <Button variant="light"  className="ml-auto w-10 text-end" onClick={() => handleLogin("redirect")}><Windows />Microsoft</Button>
+        
       
     );
 }
