@@ -8,6 +8,8 @@ import './Empresas.css'
 import { Table } from "react-bootstrap";
 import { Building } from "react-bootstrap-icons";
 
+import ProfileContent from "../../ProfileContent"
+
 const Empresas = () => {
 
     // Declaramos las variables de estado
@@ -66,6 +68,9 @@ const Empresas = () => {
 
             <div className='text-end mb-5'>
                 <h1>Gestión Empresas</h1>
+                
+                <ProfileContent />
+
                 <hr></hr>
             </div>
 
@@ -90,6 +95,7 @@ const Empresas = () => {
 
                                 <div className='col-lg-6'>
                                     <div className='text-end mt-2 me-4'>
+                                        
                                         <h2>Empresas <Building /></h2>
                                     </div>
                                 </div>

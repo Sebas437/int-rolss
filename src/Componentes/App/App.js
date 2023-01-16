@@ -16,6 +16,11 @@ import { checkPropTypes } from 'prop-types';
 
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 
+import { useIsAuthenticated } from "@azure/msal-react";
+
+import { SignInButton } from "../SignInButton";
+import { SignOutButton } from "../SignOutButton";
+
 
 function App() {
 
@@ -31,14 +36,16 @@ function App() {
   }
 
  
-
+  const isAuthenticated = useIsAuthenticated();
+  
   // const credentialsExist = localStorage!==null;
   // console.log(credentialsExist)
 
   const token = getToken();
   
   //Si el token no existe, llamos el login y le pasamos la funcion
-  if (!token) {
+  if (!isAuthenticated&&!token) {
+    
     return <Login setToken={setToken} />
   }
   
@@ -59,12 +66,18 @@ function App() {
           <Route path="/verificacion" element={<ValidaColaborador />} />
           <Route path="/viewpdf" element={<ViewPdf />} />
           <Route path="/usuarios" element={<Usuarios />} />
+          
 
 
         </Routes>
+        
       </BrowserRouter>
     </div>
   );
 }
 
 export default App;
+
+
+
+

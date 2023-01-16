@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import "./Login.css"
 import PropTypes from 'prop-types';
 import datos from '../../api/datos.json'
-import Config from "../../nuevo"
+
 
 import { useIsAuthenticated } from "@azure/msal-react";
 import { SignInButton } from "../SignInButton";
@@ -12,7 +12,7 @@ import { SignOutButton } from "../SignOutButton";
 const Login = ({ setToken }) => {
 
   const [user, setUser] = useState();
-  const [contra, setContra] = useState();
+  const [contra, setContra] = useState()
   const isAuthenticated = useIsAuthenticated();
 
   const validar = async (e) => {
@@ -28,6 +28,7 @@ const Login = ({ setToken }) => {
     //   .then(data => data.json())
     //   .then(data => { setToken(data.token) })
     setToken("data.token")
+    window.location.href="http://localhost:3000/"
   }
   
 
