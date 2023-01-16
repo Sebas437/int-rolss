@@ -1,36 +1,35 @@
 import React, { useEffect, useState } from 'react';
+import CreateUsuario from './CreateUsuario';
 
-import CreateEmpresa from './CreateEmpresa';
-import EditEmpresa from './EditEmpresa';
-
-import './Empresas.css'
-
+import './Usuarios.css'
+import EditUsuario from './EditUsuario';
 import { Table } from "react-bootstrap";
-import { Building } from "react-bootstrap-icons";
+import { Person } from "react-bootstrap-icons";
 
-const Empresas = () => {
+const Usuarios = () => {
 
     // Declaramos las variables de estado
-    const [empresas, setEmpresas] = useState([])
-    const [tablaEmp, setTablaEmp] = useState([])
+    const [usuarios, setUsuarios] = useState([])
+    const [tablaUsu, setTablaUsu] = useState([])
     const [buscador, setBuscador] = useState('')
 
     // Se ejecuta cada render
     useEffect(() => {
-        getEmpresas()
+        getUsuarios()
+
     }, [])
 
-    const getEmpresas = async () => {
+    const getUsuarios = async () => {
         // Peticion al back
-        await fetch(`http://127.0.0.1:8000/api/empresas`, {
+        await fetch(`http://127.0.0.1:8000/api/usuarios`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json;charset=utf-8' }
         })
             .then(res => res.json())
             .then(data => {
                 // Asignamos a estas dos hooks, los datos que nos retorna la petición   
-                setEmpresas(data)
-                setTablaEmp(data)
+                setUsuarios(data)
+                setTablaUsu(data);
             })
     }
 
@@ -46,33 +45,33 @@ const Empresas = () => {
         //Recibimos el valor a buscar
 
         //Filtramos el valor a buscar en la tabla
-        var resultado = tablaEmp.filter((elemento) => {
+        var resultado = tablaUsu.filter((elemento) => {
             //Buscamos por el nit y el nombre, pasamos a string despues a minuscula y despues comprobar si coincide con el termino de busqueda
-            if (elemento.nit.toString().toLowerCase().startsWith(terminoBusqueda.toLowerCase())
-                || elemento.nombre.toString().toLowerCase().startsWith(terminoBusqueda.toLowerCase())) {
+            if (elemento.usuario.toString().toLowerCase().startsWith(terminoBusqueda.toLowerCase())
+                || elemento.correo.toString().toLowerCase().startsWith(terminoBusqueda.toLowerCase())) {
                 return elemento;
             }
         });
 
         // Seteamos el resultado a los datos
-        setEmpresas(resultado);
+        setUsuarios(resultado);
     }
 
 
 
 
     return (
-        <div className='empresas'>
+        <div className='usuarios'>
 
             <div className='text-end mb-5'>
-                <h1>Gestión Empresas</h1>
+                <h1>Gestión Usuarios</h1>
                 <hr></hr>
             </div>
 
             <div className='row'>
 
                 <div className='col-lg-4'>
-                    <CreateEmpresa getEmpresas={getEmpresas} />
+                    <CreateUsuario getUsuarios={getUsuarios} />
                 </div>
 
                 <div className='col-lg-1'></div>
@@ -90,7 +89,7 @@ const Empresas = () => {
 
                                 <div className='col-lg-6'>
                                     <div className='text-end mt-2 me-4'>
-                                        <h2>Empresas <Building /></h2>
+                                        <h2>Usuarios <Person /></h2>
                                     </div>
                                 </div>
 
@@ -101,23 +100,23 @@ const Empresas = () => {
                             <Table striped>
                                 <thead>
                                     <tr>
-                                        <th>Nit</th>
-                                        <th>Nombre</th>
+                                        <th>Usuario</th>
                                         <th>Correo</th>
+                                        <th>Rol</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {empresas.length === 0 ?
+                                    {usuarios.length === 0 ?
                                         <tr>
                                             <td className='text-center' colSpan="4">No se encontraron registros</td>
                                         </tr> :
-                                        empresas.map((vt_empresa) => (
-                                            <tr key={vt_empresa.nit}>
-                                                <td>{vt_empresa.nit}</td>
-                                                <td>{vt_empresa.nombre}</td>
-                                                <td>{vt_empresa.correo}</td>
-                                                <td><EditEmpresa datos={vt_empresa} getEmpresas={getEmpresas} /></td>
+                                        usuarios.map((vt_usuario) => (
+                                            <tr key={vt_usuario.id}>
+                                                <td>{vt_usuario.usuario}</td>
+                                                <td>{vt_usuario.correo}</td>
+                                                <td>{vt_usuario.rol.descripcion}</td>
+                                                <td><EditUsuario datos={vt_usuario} getUsuarios={getUsuarios} /></td>
                                             </tr>
                                         ))
                                     }
@@ -133,4 +132,4 @@ const Empresas = () => {
     )
 }
 
-export default Empresas
+export default Usuarios

@@ -20,6 +20,7 @@ const Navbar1 = () => {
                         <Nav.Link className='a' as={Link} to='/colaboradores'>Colaboradores</Nav.Link>
                         <Nav.Link className='a' as={Link} to='/verificacion'>Verificar</Nav.Link>
                         <Nav.Link className='a' as={Link} to='/validaok'>Validar</Nav.Link>
+                        <Nav.Link className='a' as={Link} to='/usuarios'>Usuarios</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

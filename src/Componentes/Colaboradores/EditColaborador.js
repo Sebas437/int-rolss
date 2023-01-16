@@ -6,7 +6,6 @@ import { showSuccessAlert, showErrorAlert } from '../alerts.js';
 const EditColaborador = (props) => {
 
     // Declaramos las variables de estado
-    const [documento, setDocumento] = useState(props.datos.documento);
     const [nombre, setNombre] = useState(props.datos.nombre);
     const [apellidos, setApellidos] = useState(props.datos.apellidos);
     const [n_contacto, setN_contacto] = useState(props.datos.n_contacto);
@@ -14,9 +13,11 @@ const EditColaborador = (props) => {
     const [f_cedulanew, setF_cedulanew] = useState(null);
     const [c_alturasnew, setC_alturasnew] = useState(null);
 
-    const arl = props.datos.arl;
-    const f_cedula = props.datos.f_cedula;
-    const c_alturas = props.datos.c_alturas;
+    const documento = props.datos.documento;
+    const id_archivo = props.datos.id_archivo;
+    const arl = props.datos.archivo.arl;
+    const f_cedula = props.datos.archivo.f_cedula;
+    const c_alturas = props.datos.archivo.c_alturas;
 
     // Funciones del modal
     const [modal, setModal] = useState(false);
@@ -44,6 +45,7 @@ const EditColaborador = (props) => {
                     formData.append('nombre', nombre);
                     formData.append('apellidos', apellidos);
                     formData.append('n_contacto', n_contacto);
+                    formData.append('id_archivo', id_archivo);
                     formData.append('arl_old', arl);
                     formData.append('f_cedula_old', f_cedula);
                     formData.append('c_alturas_old', c_alturas);
@@ -61,14 +63,16 @@ const EditColaborador = (props) => {
                         .then(res => res.json())
                         .then(data => {
                             // Validamos la respuesta del back
-                            if (data === false) {
-                                // Error, no se inserto el colaborador
-                                showErrorAlert();
-                            } else if (data === true) {
+                            if (data === true) {
                                 // Exito
                                 props.getColaboradores(); //Recargamos la Table 
                                 modalClose();
                                 showSuccessAlert('Colaborador');
+
+                            } else {
+                                // Error, no se inserto el colaborador
+                                showErrorAlert();
+                                console.log(data)
                             }
                         })
 

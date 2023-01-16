@@ -23,8 +23,6 @@ const CreateEmpresa = (props) => {
         e.target.reset(); //Vaciamos el formulario
         props.getEmpresas();
       })
-
-
   }
 
   return (
@@ -42,17 +40,17 @@ const CreateEmpresa = (props) => {
 
             <Form.Group>
               <Form.Label>Nit: <strong className="text-danger">*</strong></Form.Label>
-              <Form.Control value={nit} onChange={(e) => setNit(e.target.value)} required type='text' />
+              <Form.Control onChange={(e) => setNit(e.target.value)} required type='text' />
             </Form.Group>
 
             <Form.Group className='mt-3'>
               <Form.Label>Nombre: <strong className="text-danger">*</strong></Form.Label>
-              <Form.Control value={nombre} onChange={(e) => setNombre(e.target.value)} type='text' required />
+              <Form.Control onChange={(e) => setNombre(e.target.value)} type='text' required />
             </Form.Group>
 
             <Form.Group className='mt-3'>
               <Form.Label>Correo: <strong className="text-danger">*</strong></Form.Label>
-              <Form.Control value={correo} onChange={(e) => setCorreo(e.target.value)} type='email' required />
+              <Form.Control onChange={(e) => setCorreo(e.target.value)} type='email' required />
             </Form.Group>
 
             <div className='text-center'>

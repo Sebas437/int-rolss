@@ -1,0 +1,21 @@
+.usuarios{
+    margin:30px 200px 0 200px;
+}
+
+@media screen and (max-width: 1800px) {
+    .usuarios {
+        margin:20px 120px 0 120px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .usuarios {
+        margin:20px 60px 0 60px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .usuarios {
+        margin:20px 20px 0 20px;
+    }
+}

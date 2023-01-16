@@ -9,11 +9,12 @@ import Empresas from '../Empresas/Empresas';
 import Colaboradores from '../Colaboradores/Colaboradores';
 import ValidaOk from '../ValidaOk/ValidaOk';
 import ValidaColaborador from '../Colaboradores/ValidateColaborador'
-import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 import ViewPdf from '../ViewPdf/ViewPdf';
-
+import Usuarios from '../Usuarios/Usuarios';
 import Navbar1 from '../layouts/Navbar';
 import { checkPropTypes } from 'prop-types';
+
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 
 
 function App() {
@@ -57,6 +58,8 @@ function App() {
           <Route path="/validaok" element={<ValidaOk />} />
           <Route path="/verificacion" element={<ValidaColaborador />} />
           <Route path="/viewpdf" element={<ViewPdf />} />
+          <Route path="/usuarios" element={<Usuarios />} />
+
 
         </Routes>
       </BrowserRouter>
