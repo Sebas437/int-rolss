@@ -54,15 +54,25 @@ const Login = ({ setToken }) => {
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type="password" onChange={e => setContra(e.target.value)} />
               </Form.Group>
-              { isAuthenticated ? <SignOutButton /> : <SignInButton /> }
-              <div className='mt-5 text-center'>
+              
+              <div className='mt-5 mb-5 text-center'>
                 <Button variant="success" type="submit">
                   Submit
                 </Button>
               </div>
-
+            
             </Form>
+           
+            <div class="d-flex justify-content-center">
+              <hr class="w-50 my-3"/>
+              <div class="text-center my-auto mx-1 opacity-50">o</div>
+              <hr class="w-50 my-3"/>
+            </div>
+
+            
+            { isAuthenticated ? <SignOutButton /> : <SignInButton /> }
           </div>
+          
           
           
           
