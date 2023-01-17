@@ -5,6 +5,11 @@
 .brand{
     color: #f9f9f9!important;
 }
+.dropdown-item{
+    color:#000;
+}
+
+
 
 /*
 .a:hover{

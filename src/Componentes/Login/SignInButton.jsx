@@ -22,8 +22,8 @@ export const SignInButton = () => {
        
     }
     return (
-        <Button variant="light"  className="ml-auto w-10 text-end" onClick={() => handleLogin("redirect")}>
-            <Windows />Microsoft
-        </Button>       
+        <Button variant="light" className="w-100" onClick={() => handleLogin("redirect")}>{" "}<img className="microsoft-img m-2" src="/icons8-microsoft.svg" alt="" />
+            Inicie sesión con Microsoft
+        </Button>    
     );
 }
