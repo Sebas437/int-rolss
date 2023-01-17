@@ -18,7 +18,7 @@ import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 
 import { useIsAuthenticated } from "@azure/msal-react";
 
-import { SignInButton } from "../SignInButton";
+
 import { SignOutButton } from "../SignOutButton";
 
 
@@ -55,9 +55,10 @@ function App() {
       <BrowserRouter>
 
         <Navbar1 />
-
+        
         <Routes>
 
+        
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/preferences" element={<Preferences />} />
           <Route path="/empresas" element={<Empresas />} />
