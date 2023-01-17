@@ -66,6 +66,9 @@ const Empresas = () => {
 
             <div className='text-end mb-5'>
                 <h1>Gestión Empresas</h1>
+                
+          
+
                 <hr></hr>
             </div>
 
@@ -90,6 +93,7 @@ const Empresas = () => {
 
                                 <div className='col-lg-6'>
                                     <div className='text-end mt-2 me-4'>
+                                        
                                         <h2>Empresas <Building /></h2>
                                     </div>
                                 </div>
