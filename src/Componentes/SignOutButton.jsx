@@ -7,7 +7,7 @@ import "./layouts/Navbar.css";
 
 export const SignOutButton = () => {
   const { instance } = useMsal();
- 
+
 
   const handleLogout = (logoutType) => {
     if (logoutType === "redirect") {

@@ -32,9 +32,10 @@ const Navbar1 = () => {
                         <Nav.Link className='a' as={Link} to='/usuarios'>Usuarios</Nav.Link>
                     
                     </Nav>
+                      {/* logout microsoft */}
                     {isAuthenticated ? <SignOutButton />: "" }
                 </Navbar.Collapse>
-                 {/* logout microsoft */}
+               
             
             </Container>
             
