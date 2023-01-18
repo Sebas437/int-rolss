@@ -22,6 +22,10 @@ import { useIsAuthenticated } from "@azure/msal-react";
 import { SignOutButton } from "../SignOutButton";
 
 
+import ValidaColaboradorSST from '../Colaboradores/validateColaboradorSST'
+import ValidacionSeguridad from "../Colaboradores/validateColaboradorSeguridad"
+import Mantenimiento from '../Colaboradores/mantenimiento';
+
 function App() {
 
   const setToken = (userToken) => {
@@ -67,6 +71,10 @@ function App() {
           <Route path="/verificacion" element={<ValidaColaborador />} />
           <Route path="/viewpdf" element={<ViewPdf />} />
           <Route path="/usuarios" element={<Usuarios />} />
+
+          <Route path="/mantenimiento" element={<Mantenimiento />} />
+          <Route path="/validacionSeguridad" element={<ValidacionSeguridad />} />
+          <Route path="/validacionSST" element={<ValidaColaboradorSST />} />
           
 
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-
+import axios from "axios";
 import {Accordion, Container, Row, Col} from "react-bootstrap";
 import datos from "../../api/colaboradoresEmpresa.json";
-import ModalValidacion from "./ModalValidacion";
-
+import ModalValidacionSST from "./modalValidacionSST";
+import ModalColaValidados from "./modalColaboradoresValidados"
 
 const ModalSolicitud = () => {
   const [colaboradores, setColaboradores] = useState([]);
@@ -29,18 +29,16 @@ const ModalSolicitud = () => {
     //Colaboradores Por Aprobar
 
     <Container>
-    
       <Row>
         <Col>
           <Accordion className=" mt-5">
             <div className=" mb-4">
-              
-              <h4>Colaboradores a validar</h4>
+              <h4>Solicitudes a validar</h4>
             </div>
             {colaboradores.map((item) =>
               //   valida y me trae solo los campos que aun no estan validados
 
-              item.aprobacion === null || item.aprobacion === false ? (
+              item.aprobacion === null ? (
                 <Accordion>
                   <Accordion.Item eventKey="0">
                     <Accordion.Header>
@@ -51,15 +49,19 @@ const ModalSolicitud = () => {
                         {
                           <div key={item.cedula}>
                             <div>
-                              <b>Cedula: </b>
-                              {item.cedula}
+                              <b>Empresa: </b>
+                              {item.empresa}
                             </div>
                             <div>
-                              <b>Nombre: </b>
-                              {item.nombre + " " + item.apellidos}
+                              <b>Fecha: </b>
+                              {item.fecha}
+                            </div>
+                            <div>
+                              <b>Labor a realizar: </b>
+                              {item.labor}
                             </div>
                             <div className=" mt-3">
-                              <ModalValidacion datos={item} />
+                              <ModalValidacionSST datos={item} />
                             </div>
                           </div>
                         }
@@ -79,12 +81,12 @@ const ModalSolicitud = () => {
 
       <Accordion className=" mt-5">
         <div className=" mb-4">
-          <h4>Colaboradores validados</h4>
+          <h4>Solicitudes Validadas</h4>
         </div>
         {colaboradores.map((item) =>
           //  valida y me trae solo los campos que ya estan validados "true"
 
-          item.aprobacion === true ? (
+          item.aprobacion === true || item.aprobacion === false ? (
             <Accordion>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>
@@ -94,16 +96,20 @@ const ModalSolicitud = () => {
                   <div>
                     {
                       <div key={item.cedula}>
-                        <div>
-                          <b>Cedula: </b>
-                          {item.cedula}
-                        </div>
-                        <div>
-                          <b>Nombre: </b>
-                          {item.nombre + " " + item.apellidos}
-                        </div>
+                       <div>
+                              <b>Empresa: </b>
+                              {item.empresa}
+                            </div>
+                            <div>
+                              <b>Fecha: </b>
+                              {item.fecha}
+                            </div>
+                            <div>
+                              <b>Labor a realizar: </b>
+                              {item.labor}
+                            </div>
                         <div className=" mt-3">
-                          <ModalValidacion datos={item} />
+                          <ModalColaValidados datos={item} />
                         </div>
                        
                       </div>

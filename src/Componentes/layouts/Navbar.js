@@ -30,6 +30,9 @@ const Navbar1 = () => {
                         <Nav.Link className='a' as={Link} to='/verificacion'>Verificar</Nav.Link>
                         <Nav.Link className='a' as={Link} to='/validaok'>Validar</Nav.Link>
                         <Nav.Link className='a' as={Link} to='/usuarios'>Usuarios</Nav.Link>
+                        <Nav.Link className='a' as={Link} to='/validacionSeguridad'>ValidacionSeguridad</Nav.Link>
+                        <Nav.Link className='a' as={Link} to='/validacionSST'>ValidacionSST</Nav.Link>
+                        <Nav.Link className='a' as={Link} to='/mantenimiento'>Mantenimiento</Nav.Link>
                     
                     </Nav>
                       {/* logout microsoft */}
