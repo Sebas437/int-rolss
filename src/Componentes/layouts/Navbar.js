@@ -8,7 +8,7 @@ import './Navbar.css'
 import { useIsAuthenticated } from "@azure/msal-react";
 
 
-import { SignOutButton } from "../SignOutButton";
+import { SignOutButton } from "../Login/SignOutButton";
 
 //Ponemos navbar1 porque navbar ya existe y asi no nos da problemas
 const Navbar1 = () => {  

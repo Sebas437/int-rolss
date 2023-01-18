@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { SignOutButton } from "../Login/SignOutButton";
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div>
+      <SignOutButton></SignOutButton>
+    </div>
   )
 }
 
