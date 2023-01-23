@@ -62,10 +62,10 @@ const Login = ({ setToken }) => {
               </div>
             </Form>
 
-            <div class="d-flex justify-content-center">
-              <hr class="w-50 my-3" />
-              <div class="text-center my-auto mx-1 opacity-50">o</div>
-              <hr class="w-50 my-3" />
+            <div className="d-flex justify-content-center">
+              <hr className="w-50 my-3" />
+              <div className="text-center my-auto mx-1 opacity-50">o</div>
+              <hr className="w-50 my-3" />
             </div>
             {isAuthenticated ? <SignOutButton /> : <SignInButton />}
           </div>
